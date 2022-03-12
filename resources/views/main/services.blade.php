@@ -11,7 +11,7 @@
                         <div class="p-2" id="cont">
                             <h1>{{ $c->title }}</h1>
                             <p>{{ $c->content }}</p>
-                            <a href="/join" class="btn btn-warning">JOIN US</a>
+                            {{-- <a href="/join" class="btn btn-warning">JOIN US</a> --}}
                         </div>
                         <div>
                             <img src="{{ url('storage/images/'.$c->image)}}" alt="" id="img">
@@ -22,7 +22,7 @@
                         <div class="p-2" id="cont">
                             <h1>{{ $c->title }}</h1>
                             <p>{{ $c->content }}</p>
-                            <a href="/join" class="btn btn-warning">GET STARTED</a>
+                            {{-- <a href="/join" class="btn btn-warning">GET STARTED</a> --}}
                         </div>
                         <div>
                             <img src="{{ url('storage/images/'.$c->image)}}" alt="" id="img">

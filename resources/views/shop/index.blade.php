@@ -1,2 +1,7 @@
-<h1>Still under maintenace</h1>
-<a href="/">MAIN PAGE</a>
+@extends('layouts.shop')
+
+@section('title', 'igiveafrica charity shop')
+
+@section('content')
+
+@endsection

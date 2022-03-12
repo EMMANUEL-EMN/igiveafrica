@@ -29,7 +29,7 @@ class main extends Controller
     }
     public function how()
     {
-        $content = content::where('page', 'how it works')->orderBy('id','ASC')->get();
+        $content = content::where('page', 'how')->orderBy('id','ASC')->get();
         $advert  =  advert::orderBy('id', 'DESC')->get();
         return view('main.howitworks', compact('content', 'advert') );
     }

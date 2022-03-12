@@ -4,8 +4,10 @@ use App\Http\Controllers\blog as ControllersBlog;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\main;
 use App\Http\Controllers\c_admin;
+use App\Http\Controllers\clientDashboard;
 use App\Http\Controllers\fundraising;
 use App\Http\Controllers\shop;
+use App\Http\Controllers\userAuth;
 use App\Models\blog;
 
 /*
@@ -35,6 +37,7 @@ Route::get('/fundraisers/', [main::class, 'fundraisers']);
 Route::get('/donors/', [main::class, 'donors']);
 Route::get('/nonprofits/', [main::class, 'nonprofits']);
 Route::get('/login/', [main::class, 'login']);
+Route::post('/authuser', [userAuth::class, 'login'])->name('user.auth');
 Route::get('/contact_us/', [main::class, 'contact']);
 
 // blogs
@@ -73,3 +76,6 @@ Route::post('/addblog', [c_admin::class, 'addBlog'])->name('blog.add');
 Route::get('/deleteBlog/{id}', [c_admin::class, 'deleteBlog'])->name('blog.delete');
 Route::get('/editBlog/{id}', [c_admin::class, 'editBlog'])->name('blog.edit');
 Route::put('/updateBlog', [c_admin::class, 'updateBlog'])->name('blog.update');
+
+// client dashboard
+Route::get('/campaign/dashboard', [clientDashboard::class, 'index']);
