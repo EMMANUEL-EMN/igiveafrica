@@ -14,7 +14,12 @@ class CreateShopsTable extends Migration
     public function up()
     {
         Schema::create('shops', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('productName');
+            $table->string('price');
+            $table->string('totalItems');
+            $table->string('description');
+            $table->string('image');
             $table->timestamps();
         });
     }
