@@ -9,7 +9,15 @@ class clientDashboard extends Controller
     //
     public function index()
     {
-        return view('clientDashboard.index');
+        $campaigns = 0;
+        $donors = 0;
+        $products = 0;
+        $targetDonation = 0;
+        $targetDonors = 0;
+        $donations = 0;
+        $targetProducts = 0;
+        return view('clientDashboard.index', compact('campaigns','donors',
+        'targetDonation','products','donations','targetDonors','targetProducts'));
     }
     public function donors()
     {

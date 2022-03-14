@@ -75,15 +75,15 @@
     #topAnchor
     {
         text-decoration: none;
-        color: black;
+        color: white;
         padding: 5px;
         margin: 10px;
     }
     
     #topAnchor:hover
     {
-        background-color: black;
-        padding: 2px;
+        background-color: #227ad8;
+        padding: 4px;
         color: white;
         font-weight: bolder;
     }
@@ -105,7 +105,7 @@
 {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: #ec3d3d;
     width: 250px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;

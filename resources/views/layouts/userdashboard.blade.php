@@ -12,11 +12,18 @@
     <link rel="stylesheet" href="{{ url('storage/css/clientDboard.css') }}">
     <link rel="stylesheet" href="{{ url('storage/css/upgrade.css') }}">
     <link rel="stylesheet" href="{{ url('storage/css/clientD.css') }}">
+    <link rel="stylesheet" href="{{ url('storage/css/campaign.css') }}">
+    <link rel="stylesheet" href="{{ url('storage/css/reports.css') }}">
 
     <link rel="icon" href="{{ url('storage/images/logo.png')}}">
+
     <script src="{{ url('storage/js/jquery.js') }}"></script>
     <script src="{{ url('storage/js/chart.js') }}"></script>
     <script src="{{ url('storage/js/chart.min.js') }}"></script>
+    <script src="{{ url('storage/js/client.js') }}"></script>
+    <script src="{{ url('storage/js/reports.js') }}"></script>
+
+
 </head>
 <body>
 <div class="container-fluid">

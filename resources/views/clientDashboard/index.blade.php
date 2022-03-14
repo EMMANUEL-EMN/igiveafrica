@@ -23,9 +23,9 @@
             </div>
             <div class="gii">
                 <ul>
-                    <li>Target Donation: 20,000</li>
-                    <li>Target Dornors: 100</li>
-                    <li>Target Products: 200</li>
+                    <li>Target Donation: {{ $targetDonation }}</li>
+                    <li>Target Dornors: {{ $targetDonors }}</li>
+                    <li>Target Products: {{ $targetProducts }}</li>
                 </ul>
             </div>
         </div>
@@ -36,7 +36,7 @@
            let myChart1=$('#chart1');
            let label1 = ['Target Donation','Donations','Donors', 'Campaigns','Products'];
            let colors1 = ['green','blue','maroon','orangered'];
-           let data1= [20,000,4589,67,500,149];
+           let data1= [{{$targetDonation}},{{ $donations }},{{ $donors }},{{ $campaigns}},{{ $products }}];
            let chart1 = new Chart(myChart1,{
                 type: 'line',
                 data: {
