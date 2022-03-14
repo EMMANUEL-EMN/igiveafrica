@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ url('storage/css/client.css')}}">
     <link rel="stylesheet" href="{{ url('storage/css/clientDboard.css') }}">
     <link rel="stylesheet" href="{{ url('storage/css/upgrade.css') }}">
+    <link rel="stylesheet" href="{{ url('storage/css/clientD.css') }}">
+
     <link rel="icon" href="{{ url('storage/images/logo.png')}}">
     <script src="{{ url('storage/js/jquery.js') }}"></script>
     <script src="{{ url('storage/js/chart.js') }}"></script>

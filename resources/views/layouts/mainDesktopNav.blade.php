@@ -65,8 +65,8 @@
     .wrapperClass
     {
         /* background-color: #227ad8; */
-        background-color: white;
-        color: black;
+        background-color: #ec3d3d;
+        color: white;
         font-weight: 900;
         padding: 10px;
         border-bottom: 20px solid #227ad8;

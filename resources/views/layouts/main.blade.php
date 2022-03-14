@@ -15,6 +15,11 @@
 <body>
 <div class="container-fluid">
     @include('layouts.mainDesktopNav')
+    {{-- <div class="row">
+        <div class="s">
+            @yield('intro')
+        </div>
+    </div> --}}
     <div class="row">
         <div class="col-sm">
             <div id="maincont">
