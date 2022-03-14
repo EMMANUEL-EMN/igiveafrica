@@ -15,14 +15,15 @@
 <body>
 <div class="container-fluid">
    
-    <div class="row">
-        <div class="col-sm-3">
+    <div class="row no-gutters">
+        <div class="col-sm-2">
             <div id="maincont">
-                @yield('content')
+                @include('clientDashboard.sidenav')
             </div>
         </div>
         <div class="col-md">
-           
+            @include('clientDashboard.topnav')
+           @yield('content')
         </div>
     </div>
 </div>

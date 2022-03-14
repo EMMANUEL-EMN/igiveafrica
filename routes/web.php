@@ -79,3 +79,13 @@ Route::put('/updateBlog', [c_admin::class, 'updateBlog'])->name('blog.update');
 
 // client dashboard
 Route::get('/campaign/dashboard', [clientDashboard::class, 'index']);
+Route::get('/campaign/donors', [clientDashboard::class, 'donors']);
+Route::get('/campaign/upgrade', [clientDashboard::class, 'upgrades']);
+Route::get('/campaign/recuring_plans', [clientDashboard::class, 'recuring']);
+Route::get('/campaign/campaigns', [clientDashboard::class, 'campaigns']);
+Route::get('/campaign/fundraisers', [clientDashboard::class, 'fundraisers']);
+Route::get('/campaign/reports', [clientDashboard::class, 'reports']);
+Route::get('/campaign/intergrations', [clientDashboard::class, 'intergration']);
+Route::get('/campaign/communication', [clientDashboard::class, 'communication']);
+Route::get('/campaign/partners', [clientDashboard::class, 'partners']);
+Route::get('/campaign/account_settings', [clientDashboard::class, 'settings']);
