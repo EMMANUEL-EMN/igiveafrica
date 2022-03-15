@@ -3,7 +3,7 @@
         <div class="wrapperClass">
             <div class="d-flex flex-row justify-content-between">
                 <div class="p2" style="padding-left: 5px;">
-                    <img src="{{ url('storage/images/logo.png')}}" alt="" height="50px" width="120px" id="logo">
+                    <img src="{{ url('storage/images/logo.png')}}" alt="" height="auto" width="60px" id="logo">
                 </div>
                 <div class="p2" id="lgv">
                     <ul class="d-flex flex-row justify-content-around" id="dnav">

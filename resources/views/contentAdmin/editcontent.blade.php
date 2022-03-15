@@ -12,7 +12,7 @@
             @csrf
             <div class="page">
                 <h4>WRITE WEB CONTENT</h4>
-                <input type="number" name="id" value="{{ $content->id }}" id="">
+                <input type="hidden" name="id" value="{{ $content->id }}" id="">
                 <hr>
                 <p>Page</p>
                 <p>
