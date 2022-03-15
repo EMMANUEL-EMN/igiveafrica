@@ -49,6 +49,9 @@
                     <i class="fa fa-bars" style="font-size: 2.5em;cursor: pointer;"></i>
                 </div>
             </div>
+            <div class="mb">
+                @include('layouts.mainMobileNav')
+            </div>
         </div>
     </div>
 </div>
@@ -143,10 +146,11 @@ li
     }
     #mobNav
     {
-        height: 100%;
+        background-color: #ec3d3d;
+        color: white;
+        font-weight: 900;
+        padding: 10px;
         width: 100%;
-        background-color: white;
-        margin: 5px;
     }
     .mobNavLinks
     {
@@ -178,15 +182,29 @@ $(document).ready(function()
     let mobNav = $("#mobNav");
     const menu = $('.wrapperClass');
     const close = $('#close');
+    const lm1 = $('.lm1');
+    const mr1 = $('#curl1');
+
+    const lm2 = $('.lm2');
+    const mr2 = $('#curl2');
+
+    mr1.hide();
+    mr2.hide();
+
     menuBtn.click(function()
     {
         mobNav.toggle();
-        menu.hide();
     });
 
     close.click(()=>{
         mobNav.hide();
         menu.show();
+    });
+    lm1.click(()=>{
+        mr1.toggle();
+    });
+    lm2.click(()=>{
+        mr2.toggle();
     });
 });
 </script>
