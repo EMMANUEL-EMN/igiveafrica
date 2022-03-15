@@ -8,7 +8,7 @@ use App\Http\Controllers\clientDashboard;
 use App\Http\Controllers\fundraising;
 use App\Http\Controllers\shop;
 use App\Http\Controllers\userAuth;
-use App\Models\blog;
+use App\Http\Controllers\blog;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ Route::get('/pricing/', [main::class, 'pricing']);
 Route::get('/Case_studies/', [main::class, 'caseStudies']);
 Route::get('/our_team/', [main::class, 'team']);
 Route::get('/partners/', [main::class, 'partner']);
-Route::get('/events_&_action/', [main::class, 'event']);
+Route::get('/events_&_auction/', [main::class, 'event']);
 Route::get('/strategies/', [main::class, 'strategies']);
 Route::get('/communication/', [main::class, 'communication']);
 Route::get('/fundraisers/', [main::class, 'fundraisers']);
