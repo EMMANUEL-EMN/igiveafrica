@@ -3,7 +3,7 @@
         <div class="wrapperClass">
             <div class="d-flex flex-row justify-content-between">
                 <div class="p2" style="padding-left: 5px;">
-                    <img src="{{ url('storage/images/logo.png')}}" alt="" height="auto" width="60px" id="logo">
+                    <img src="{{ url('storage/images/logo.png')}}" alt="" id="logo">
                 </div>
                 <div class="p2" id="lgv">
                     <ul class="d-flex flex-row justify-content-around" id="dnav">
@@ -101,7 +101,11 @@
     position: relative;
     display: inline-block;
 }
-
+#logo
+{
+    max-width: 60px;
+    max-height: 60px;
+}
 
 
 .dropdown-content 

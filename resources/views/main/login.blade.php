@@ -11,9 +11,10 @@
             @method('post')
             <div class="ldetails">
                 <h4 class="text-center">WELCOME BACK</h4>
+                <hr>
                 <p>Email: </p>
                 <p>
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="email" required>
                     <br>
                     
                         {{-- @if ($errors == true)
@@ -27,7 +28,7 @@
                 </p>
                 <p>Password: </p>
                 <p>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" required>
                     {{-- <br>
                     @if ($errors == true)
                         <span class="alert alert-danger">
@@ -38,7 +39,7 @@
                     @endif --}}
                 </p>
                 <p>
-                    <button class="btn btn-success">LOGIN</button>
+                    <button class="btn btn-warning">LOGIN</button>
                 </p>
                 <p>
                     Forgot password ? <a href="">Reset</a>

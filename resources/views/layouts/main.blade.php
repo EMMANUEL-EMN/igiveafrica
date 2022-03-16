@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ url('storage/css/fontawesome.min.css')}}">
     <link rel="stylesheet" href="{{ url('storage/css/main.css')}}">
     <link rel="stylesheet" href="{{ url('storage/css/header.css')}}">
+    <link rel="stylesheet" href="{{ url('storage/css/blogs.css')}}">
 
     <link rel="icon" href="{{ url('storage/images/logo.png')}}">
     <script src="{{ url('storage/js/jquery.js') }}"></script>

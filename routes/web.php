@@ -9,6 +9,7 @@ use App\Http\Controllers\fundraising;
 use App\Http\Controllers\shop;
 use App\Http\Controllers\userAuth;
 use App\Http\Controllers\blog;
+use App\Http\Controllers\contact;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,9 +40,12 @@ Route::get('/nonprofits/', [main::class, 'nonprofits']);
 Route::get('/login/', [main::class, 'login']);
 Route::post('/authuser', [userAuth::class, 'login'])->name('user.auth');
 Route::get('/contact_us/', [main::class, 'contact']);
+Route::post('/contact/igive', [contact::class, 'contact'])->name('contact.igive');
 
 // blogs
 Route::get('/blog/', [blog::class, 'index']);
+Route::get('/blog/read/{id}', [blog::class, 'read']);
+
 Route::get('/fundraise/courses_we_serve/', [fundraising::class, 'index']);
 
 // onlineshop
