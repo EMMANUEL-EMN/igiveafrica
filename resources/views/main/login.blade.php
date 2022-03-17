@@ -45,7 +45,7 @@
                     Forgot password ? <a href="">Reset</a>
                 </p>
                 <p>
-                    Not a member ? <a href="">Register</a>
+                    Not a member ? <a href="/join">Register</a>
                 </p>
             </div>
         </form>

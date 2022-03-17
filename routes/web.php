@@ -41,6 +41,7 @@ Route::get('/login/', [main::class, 'login']);
 Route::post('/authuser', [userAuth::class, 'login'])->name('user.auth');
 Route::get('/contact_us/', [main::class, 'contact']);
 Route::post('/contact/igive', [contact::class, 'contact'])->name('contact.igive');
+Route::get('/join', [contact::class, 'join']);
 
 // blogs
 Route::get('/blog/', [blog::class, 'index']);
