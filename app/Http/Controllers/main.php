@@ -89,7 +89,7 @@ class main extends Controller
     }
     public function nonprofits()
     {
-        $content = content::where('page', 'nonprofits')->orderBy('id','ASC')->get();
+        $content = content::where('page', 'nonprofit')->orderBy('id','ASC')->get();
         $advert  =  advert::orderBy('id', 'DESC')->get();
         return view('main.nonprofit', compact('content', 'advert') );
     }
