@@ -4,7 +4,7 @@
             igiveafricamail@gmail.com
         </div>
         <div class="p-2">
-            <a href="">Logout</a>
+            <a href="/logout">Logout</a>
         </div>
     </div>
     <hr>

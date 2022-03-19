@@ -5,24 +5,6 @@
 
 @section('content')
 
-    <div class="selectF">
-        {{-- <center>
-            <div id="cja">
-                <h4>SELECT DESIRED ACCOUNT</h4>
-                <div class="d-flex justify-content-between">
-                    <div class="cfb">
-                        <button class="btn btn-primary">Nonprofit</button>
-                    </div>
-                    <div class="dfb">
-                        <button class="btn btn-primary">Donor</button>
-                    </div>
-                    <div class="ifb">
-                        <button class="btn btn-primary">Individual</button>
-                    </div>
-                </div>
-            </div>
-        </center> --}}
-    </div>
     <div class="donorF">
         <div id="allj">
            <center>
@@ -30,6 +12,14 @@
                     <div class="text-center">
                         <h5>GET STARTED WITH IGIVEAFRICA</h5>
                         <hr>
+                        @if (session()->has('status'))
+                            <p class="alert alert-danger">{{ session('status') }}</p>
+                        @endif
+                        {{-- @if ($errors)
+                            @foreach ($errors as $r)
+                                {{ $r->message}}
+                            @endforeach
+                        @endif --}}
                     </div>
                     @include('main.donorj')
                 </div>
@@ -37,6 +27,6 @@
         </div>
     </div>
 
-    <div class="clientF"></div>
+    {{-- <div class="clientF"></div> --}}
 
 @endsection

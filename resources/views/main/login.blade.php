@@ -12,6 +12,9 @@
             <div class="ldetails">
                 <h4 class="text-center">WELCOME BACK</h4>
                 <hr>
+                @if (session()->has('status'))
+                    <p class="alert alert-danger">{{ session('status') }}</p>
+                @endif
                 <p>Email: </p>
                 <p>
                     <input type="email" name="email" id="email" required>

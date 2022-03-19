@@ -43,6 +43,8 @@ Route::get('/contact_us/', [main::class, 'contact']);
 Route::post('/contact/igive', [contact::class, 'contact'])->name('contact.igive');
 Route::get('/join', [contact::class, 'join']);
 
+Route::post('/join/igiveafrica', [userAuth::class, 'joinus'])->name('client.join');
+
 // blogs
 Route::get('/blog/', [blog::class, 'index']);
 Route::get('/blog/read/{id}', [blog::class, 'read']);
@@ -94,3 +96,4 @@ Route::get('/campaign/intergrations', [clientDashboard::class, 'intergration']);
 Route::get('/campaign/communication', [clientDashboard::class, 'communication']);
 Route::get('/campaign/partners', [clientDashboard::class, 'partners']);
 Route::get('/campaign/account_settings', [clientDashboard::class, 'settings']);
+Route::get('/logout', [userAuth::class, 'logoutClient']);
