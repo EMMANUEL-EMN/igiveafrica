@@ -11,6 +11,7 @@
             <p>Campaign Title</p>
             <p>
                 <input type="text" name="campaignTitle" id="title" value="{{ $c->title }}">
+                <input type="text" name="id" id="id" value="{{ $c->id }}">
             </p>
             <div>
                 <p>Campain Goal</p>

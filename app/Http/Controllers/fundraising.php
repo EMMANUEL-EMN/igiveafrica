@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\advert;
+use App\Models\campaign;
 use Illuminate\Http\Request;
 
 class fundraising extends Controller
 {
     public function index()
-    {
-        return view('fundraising.courses');
+    {   $campaigns = campaign::all();
+        $advert = advert::all();
+        return view('fundraising.courses',compact('campaigns', 'advert'));
     }
 
     public function campaignInfo($title, $email)
     {
-        return view('/');
+
     }
 }
