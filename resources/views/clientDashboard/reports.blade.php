@@ -4,7 +4,7 @@
 
 @section('content')
 {{-- css in reports.css --}}
-<div class="comm">
+{{-- <div class="comm">
     <div class="row">
         <div class="text-center">
             <h4 id="theading">CAMPAIGN REPORTS</h4>
@@ -82,6 +82,6 @@
     <div class="row" id="updateReport">
         @include('clientDashboard.updateReport')
     </div>
-</div>
+</div> --}}
 
 @endsection

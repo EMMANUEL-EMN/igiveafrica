@@ -10,4 +10,9 @@ class fundraising extends Controller
     {
         return view('fundraising.courses');
     }
+
+    public function campaignInfo($title, $email)
+    {
+        return view('/');
+    }
 }

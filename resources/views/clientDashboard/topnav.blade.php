@@ -5,3 +5,4 @@
         <p><a id="side_nav_anchor" href="/logout"><i class="fa fa-sign-out-alt"></i>Sign Out</a></p>       
     </div>
 </div>
+

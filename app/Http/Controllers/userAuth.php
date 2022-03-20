@@ -26,9 +26,11 @@ class userAuth extends Controller
                 foreach ($clients as $client) {
                    print_r($client['org_type']);
                     if ($client['org_type'] == 'contentAdmin') {
+                        session()->put('position', $client['email']);
                         return redirect('/c_dashboard');
                     }
                     elseif ($client['org_type'] == 'nonprofit' || $client['org_type'] == 'individual') {
+                        session()->put('position', $client['email']);
                         return redirect('/campaign/dashboard');
                     }
                 }
@@ -83,6 +85,7 @@ class userAuth extends Controller
 
     public function logoutClient()
     {
+        session()->pull('position');
         return redirect('/login');
     }
 }

@@ -97,3 +97,6 @@ Route::get('/campaign/communication', [clientDashboard::class, 'communication'])
 Route::get('/campaign/partners', [clientDashboard::class, 'partners']);
 Route::get('/campaign/account_settings', [clientDashboard::class, 'settings']);
 Route::get('/logout', [userAuth::class, 'logoutClient']);
+
+Route::post('/campaign/campaign/application', [clientDashboard::class, 'capplication'])->name('client.campaign');
+Route::get('/fundraise/{title}/{email}', [fundraising::class, 'campainginfo']);
