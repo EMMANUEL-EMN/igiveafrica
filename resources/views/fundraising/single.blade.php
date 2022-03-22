@@ -1,22 +1,27 @@
-@extends('layouts.main')
+@extends('layouts.campaign')
 
 @section('title', 'campaign reader')
 
 @section('content')
 
     <div class="bsingle">
-        <div class="bs">
-            <h1>
-                <a id="ba" href="/campaign">campaign</a>
-            </h1>
-        </div>
-        <div class="text-start">
+        <div class="text-center">
             <h2>{{ $campaign->title }}</h2>
+            <hr>
         </div>
-        <div class="bimage">
-            <center>
-                <img src="{{ url('storage/campaign/'.$campaign->image) }}" alt="" id="bsimg">
-            </center>
+        <div class="d-flex justify-content-between">
+            <div class="cimage">
+                <center>
+                    <img src="{{ url('storage/campaign/'.$campaign->image) }}" alt="" id="csimg">
+                </center>
+                <div class="cVideo">
+                    <hr>
+                    <video src="{{ url('storage/campaign/'.$campaign->video) }}" controls id="cv"></video>
+                </div>
+            </div>
+            <div class="cf">
+                @include('fundraising.donateForm')
+            </div>
         </div>
         <div class="b1">
             <h4>SUMMARY</h4>
@@ -31,10 +36,8 @@
             <p>{{ $campaign->solution }}</p>
         </div>
         <div class="b1">
+            <h4>OUR GRATITUDE</h4>
             <p>{{ $campaign->thanksNote }}</p>
-        </div>
-        <div class="cVideo">
-            <video src="{{ url('storage/campaign/'.$campaign->video) }}" controls></video>
         </div>
     </div>
 @endsection
