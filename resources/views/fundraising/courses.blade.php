@@ -25,5 +25,10 @@
             @endforeach
         </div>
     </div>
-
+<style>
+    .bgc
+    {
+        background-image: url('storage/images/')
+    }
+</style>
 @endsection

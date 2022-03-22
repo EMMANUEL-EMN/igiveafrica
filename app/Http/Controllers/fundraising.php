@@ -14,8 +14,10 @@ class fundraising extends Controller
         return view('fundraising.courses',compact('campaigns', 'advert'));
     }
 
-    public function campaignInfo($title, $email)
+    public function campaignInfo($id)
     {
-
+        $campaign = campaign::findOrFail($id);
+        $advert = advert::all();
+        return view('fundraising.single', compact('campaign','advert'));
     }
 }
