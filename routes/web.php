@@ -10,6 +10,8 @@ use App\Http\Controllers\shop;
 use App\Http\Controllers\userAuth;
 use App\Http\Controllers\blog;
 use App\Http\Controllers\contact;
+use App\Http\Controllers\donation;
+use App\Mail\thanksDonor;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,12 +39,17 @@ Route::get('/communication/', [main::class, 'communication']);
 Route::get('/fundraisers/', [main::class, 'fundraisers']);
 Route::get('/donors/', [main::class, 'donors']);
 Route::get('/nonprofits/', [main::class, 'nonprofits']);
-Route::get('/login/', [main::class, 'login']);
+
+// login user
+Route::get('/login/', [main::class, 'login'])->name('login');
 Route::post('/authuser', [userAuth::class, 'login'])->name('user.auth');
+
+// contact us
 Route::get('/contact_us/', [main::class, 'contact']);
 Route::post('/contact/igive', [contact::class, 'contact'])->name('contact.igive');
-Route::get('/join', [contact::class, 'join']);
 
+// create account
+Route::get('/join', [contact::class, 'join']);
 Route::post('/join/igiveafrica', [userAuth::class, 'joinus'])->name('client.join');
 
 // blogs
@@ -100,3 +107,6 @@ Route::get('/logout', [userAuth::class, 'logoutClient']);
 
 Route::post('/campaign/campaign/application', [clientDashboard::class, 'capplication'])->name('client.campaign');
 Route::get('/fundraise/read/{id}', [fundraising::class, 'campaignInfo']);
+
+// email route
+Route::post('/thanks', [donation::class, 'sendMail'])->name('igive.mail');

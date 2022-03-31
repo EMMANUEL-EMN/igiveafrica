@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\client;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class userAuth extends Controller
 {
@@ -15,30 +17,26 @@ class userAuth extends Controller
             'email' => 'required|email',
             'password' => 'required|string'
         ]);
-        $users = User::all();
-        
-        foreach ($users as $user) {
-            
-            if($user['email'] == $req->email && $user['password'] == $req->password)
-            {
-                $clients = client::where('email',$req->email)->get();
-            
-                foreach ($clients as $client) {
-                   print_r($client['org_type']);
-                    if ($client['org_type'] == 'contentAdmin') {
-                        session()->put('position', $client['email']);
-                        return redirect('/c_dashboard');
-                    }
-                    elseif ($client['org_type'] == 'nonprofit' || $client['org_type'] == 'individual') {
-                        session()->put('position', $client['email']);
-                        return redirect('/campaign/dashboard');
-                    }
+        $credentials = $req->only('email', 'password');
+        // print_r($credentials);
+        if (Auth::attempt($credentials)) {
+
+            $clients = client::where('email', $req->email)->get();
+
+            foreach ($clients as $client) {
+
+                if ($client['org_type'] == 'contentAdmin') {
+
+                    session()->put('position', $client['email']);
+                    return redirect('/c_dashboard');
+                } elseif ($client['org_type'] == 'nonprofit' || $client['org_type'] == 'individual') {
+                    session()->put('position', $client['email']);
+                    return redirect('/campaign/dashboard');
                 }
-               
             }
         }
-        
-        return redirect('/login/')->with('status', 'invalid login credentials');
+
+        // return redirect('/login/')->with('status', 'invalid login credentials');
     }
 
     public function joinus(Request $req)
@@ -62,7 +60,7 @@ class userAuth extends Controller
         $client->firstname = $req->fname;
         $client->lastname = $req->lname;
         $client->email = $req->email;
-        $client->password = $req->password;
+        $client->password = Hash::make($req->password);
         $client->country = $req->country;
         $client->city = $req->city;
         $client->org_type = $req->org_type;
@@ -75,9 +73,9 @@ class userAuth extends Controller
         $client->save();
 
         $user = new User();
-        $user->name = $req->fname." ".$req->lname;
+        $user->name = $req->fname . " " . $req->lname;
         $user->email = $req->email;
-        $user->password = $req->password;
+        $user->password = Hash::make($req->password);
         $user->save();
 
         return redirect('/join')->with('sent', 'Account created successfully');
@@ -86,6 +84,7 @@ class userAuth extends Controller
     public function logoutClient()
     {
         session()->pull('position');
+        Auth::logout();
         return redirect('/login');
     }
 }
