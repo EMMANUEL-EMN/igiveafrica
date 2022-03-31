@@ -8,15 +8,21 @@
         <div class="text-center">
             <h2>{{ $campaign->title }}</h2>
             <hr>
+            @if (session()->has('status'))
+                <p class="alert alert-success alert-dismissible">
+                    {{ session('status') }}
+                    <button class="close" data-dismiss="alert">&times;</button>
+                </p>
+            @endif
         </div>
         <div class="d-flex justify-content-between">
             <div class="cimage">
                 <center>
-                    <img src="{{ url('storage/campaign/'.$campaign->image) }}" alt="" id="csimg">
+                    <img src="{{ url('storage/campaign/' . $campaign->image) }}" alt="" id="csimg">
                 </center>
                 <div class="cVideo">
                     <hr>
-                    <video src="{{ url('storage/campaign/'.$campaign->video) }}" controls id="cv"></video>
+                    <video src="{{ url('storage/campaign/' . $campaign->video) }}" controls id="cv"></video>
                 </div>
             </div>
             <div class="cf">
@@ -41,4 +47,3 @@
         </div>
     </div>
 @endsection
-

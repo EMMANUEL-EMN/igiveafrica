@@ -3,9 +3,6 @@
     @method('post')
     <div class="chead">
         <h5>CHOOSE AMOUNT TO DONATE</h5>
-        @if (session()->has('status'))
-            <p class="alert alert-success">{{ session('status') }}</p>
-        @endif
         <div class="hc">
             <input type="hidden" name="id" id="" value="{{ $campaign->id }}">
             <input type="hidden" name="cemail" id="" value="{{ $campaign->cemail }}">
@@ -20,7 +17,7 @@
                 <p><input type="radio" name="amount" value="500" id="amount"></p>
             </div>
             <div id="adiv">
-                <p>Ksh. 2000  </p>
+                <p>Ksh. 2000 </p>
                 <p><input type="radio" name="amount" value="500" id="amount"></p>
             </div>
             <div id="adiv">
@@ -35,7 +32,7 @@
             <p>Phone Number</p>
             <input type="text" name="phone" id="comment" value="+254" required>
             <p>
-                Display your donations on donor wall 
+                Display your donations on donor wall
                 <input type="checkbox" name="display_name" id="display_name">
             </p>
         </div>
