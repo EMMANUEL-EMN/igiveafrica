@@ -3,17 +3,15 @@
 @section('title', 'campaign communication')
 
 @section('content')
-{{-- css combined found in clientDboard.css  --}}
+    {{-- css combined found in clientDboard.css --}}
     <div class="comm">
         <div id="content">
-            <div class="main_menu">
+            <div class="main_menu bg-white">
                 <h3>COMMUNICATION TOOLS</h3>
-                <i class="fa fa-users" style="color: green;font-size:4.2em"></i> 
-                <br>
-                <i class="fa fa-hand-point-down" style="color: red;font-size: 4.2em;"> </i> 
+
                 <h6>ENGAGE YOUR DONORS NETWORK WITH EASY TO USE COMMUNICATION TOOLS</h6>
-                
-                <div class="comm_tools">
+
+                <div class="comm_tools bg-white">
                     <div id="email">
                         <p><i class="fa fa-envelope-open" style="color: red;font-size:4.2em"></i></p>
                         <p>Send Email</p>
@@ -30,7 +28,7 @@
                 <hr>
                 <div class="comm_tools">
                     <div id="emailArea">
-                        <h3 class="text-center">ENGAGE THROUGH EMAIL</h3>
+                        <h5 class="text-center">SEND EMAIL</h5>
                         <form action="" class="text-start">
                             <p>To: </p>
                             <p>
@@ -55,7 +53,7 @@
                         </form>
                     </div>
                     <div id="textArea">
-                        <h3 class="text-center">ENGAGE THROUGH TEXT</h3>
+                        <h5 class="text-center">ENGAGE THROUGH TEXT</h5>
                         <form action="" class="text-start">
                             <p>To: </p>
                             <p>
@@ -80,7 +78,7 @@
                         </form>
                     </div>
                     <div id="videoArea">
-                    <h3 class="text-center">UPLOAD SITE VIDEO</h3>
+                        <h5 class="text-center">UPLOAD VIDEO</h5>
                         <form action="../app.php" method="POST" enctype="multipart/form-data" class="text-start">
                             <p>Select video</p>
                             <p>

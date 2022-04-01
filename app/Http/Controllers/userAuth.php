@@ -18,7 +18,7 @@ class userAuth extends Controller
             'password' => 'required|string'
         ]);
         $credentials = $req->only('email', 'password');
-        // print_r($credentials);
+
         if (Auth::attempt($credentials)) {
 
             $clients = client::where('email', $req->email)->get();
@@ -36,7 +36,7 @@ class userAuth extends Controller
             }
         }
 
-        // return redirect('/login/')->with('status', 'invalid login credentials');
+        return redirect('/login/')->with('status', 'invalid login credentials');
     }
 
     public function joinus(Request $req)

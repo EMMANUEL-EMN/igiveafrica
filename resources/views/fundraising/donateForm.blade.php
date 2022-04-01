@@ -14,20 +14,20 @@
             </div>
             <div id="adiv">
                 <p>Ksh. 1000</p>
-                <p><input type="radio" name="amount" value="500" id="amount"></p>
+                <p><input type="radio" name="amount" value="1000" id="amount"></p>
             </div>
             <div id="adiv">
                 <p>Ksh. 2000 </p>
-                <p><input type="radio" name="amount" value="500" id="amount"></p>
+                <p><input type="radio" name="amount" value="2000" id="amount"></p>
             </div>
             <div id="adiv">
                 <p>Ksh. 25000</p>
-                <p><input type="radio" name="amount" value="500" id="amount"></p>
+                <p><input type="radio" name="amount" value="2500" id="amount"></p>
             </div>
         </div>
         <div>
             <p>Custom amount</p>
-            <input type="number" name="amount" id="custom" placeholder="Ksh.">
+            <input type="number" name="camount" id="custom" placeholder="Ksh.">
             <br>
             <p>Phone Number</p>
             <input type="text" name="phone" id="comment" value="+254" required>

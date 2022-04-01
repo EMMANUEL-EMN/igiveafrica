@@ -16,13 +16,18 @@ class donation extends Controller
         $donation = new ModelsDonation();
         $donation->cemail = $req->cemail;
         $donation->paymentOption = 'Mpesa';
-        $donation->amount = 500;
+
+        if (!empty($req->camount)) {
+            $donation->amount = $req->camount;
+        } else {
+            $donation->amount = $req->amount;
+        }
         $donation->mobile = $req->phone;
         $donation->donorWall = $req->display_name;
         $donation->fullname = $req->fname;
         $donation->email = $req->email;
         $donation->country = $req->country;
-        $donation->acknoledged = "no";
+        $donation->acknoledged = "yes";
         $donation->save();
         try {
             Mail::to($req->email)->send(new thanksDonor());

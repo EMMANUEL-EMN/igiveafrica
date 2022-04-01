@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\campaign;
+use App\Models\donation;
 use Illuminate\Http\Request;
 
 class clientDashboard extends Controller
@@ -10,22 +11,52 @@ class clientDashboard extends Controller
     //
     public function index()
     {
-        $campaigns = 0;
-        $donors = 0;
+        $campaigns = campaign::where('cemail', session('position'))->get()->count();
+        $donors = donation::where('cemail', session('position'))->get()->count();
         $products = 0;
-        $targetDonation = 0;
-        $targetDonors = 0;
-        $donations = 0;
-        $targetProducts = 0;
+        $tdonations = donation::where('cemail', session('position'))->get();
+        $d = 0;
+        foreach ($tdonations as $key) {
+            $d += $key['amount'];
+        }
+        $campaignss = campaign::where('cemail', session('position'))->get();
+        foreach ($campaignss as $campaign) {
+            $targetDonation = $campaign['goal'];
+            $targetDonors = $campaign['tdonors'];
+        }
+        $donations = $d;
         if (session()->has('position')) {
-            return view('clientDashboard.index', compact('campaigns','donors',
-            'targetDonation','products','donations','targetDonors','targetProducts'));
+            return view('clientDashboard.index', compact(
+                'campaigns',
+                'donors',
+                'targetDonation',
+                'products',
+                'donations',
+                'targetDonors'
+            ));
         }
         return redirect('/login');
     }
     public function donors()
     {
-        return view('clientDashboard.donors');
+        $donors = donation::where('cemail', session('position'))->get();
+        $totalDonation = 0;
+        foreach ($donors as $donor) {
+            $totalDonation += $donor['amount'];
+        }
+        $totalDonors = $donors->count();
+        $campaign = campaign::where('cemail', session('position'))->get();
+        $targets = '';
+        foreach ($campaign as $key) {
+            $targets = $key['goal'];
+        }
+        $target = $targets;
+        return view('clientDashboard.donors', compact(
+            'donors',
+            'target',
+            'totalDonation',
+            'totalDonors'
+        ));
     }
 
     public function upgrades()
@@ -34,17 +65,35 @@ class clientDashboard extends Controller
     }
     public function recuring()
     {
+
         return view('clientDashboard.recuring');
     }
     public function campaigns()
     {
         $campaigns = campaign::where('cemail', session('position'))->get();
         //$campaign = campaign::findOrFail($campaigns['id']);
-        return view('clientDashboard.campaigns',compact('campaigns'));
+        return view('clientDashboard.campaigns', compact('campaigns'));
     }
     public function fundraisers()
     {
-        return view('clientDashboard.fundraisers');
+        $donors = donation::where('cemail', session('position'))->get();
+        $totalDonation = 0;
+        foreach ($donors as $donor) {
+            $totalDonation += $donor['amount'];
+        }
+        $totalDonors = $donors->count();
+        $campaign = campaign::where('cemail', session('position'))->get();
+        $targets = '';
+        foreach ($campaign as $key) {
+            $targets = $key['goal'];
+        }
+        $target = $targets;
+        return view('clientDashboard.fundraisers', compact(
+            'donors',
+            'target',
+            'totalDonation',
+            'totalDonors'
+        ));
     }
     public function reports()
     {
@@ -73,14 +122,11 @@ class clientDashboard extends Controller
         // $validated = $req->validate([
         //     'campaignTitle' => 'required',
         //     'useremail' => 'required|email',
-        //     'campaingGoal' => 'required|alpha_num',
-        //     'targetDonors' => 'required|alpha_num',
-        //     'objective1' => 'required|string',
-        //     'objective2' => 'required|string',
-        //     'objective3' => 'required|string',
-        //     'campaignLogo' => 'file',
-        //     'campaignImage' => 'file',
-        //     'campaignVideo' => 'file',
+        //     'campaingGoal' => 'required',
+        //     'targetDonors' => 'required',
+        //     'objective1' => 'string',
+        //     'objective2' => 'string',
+        //     'objective3' => 'string',
         //     'campaignSummary' => 'string',
         //     'campaignChallenge' => 'string',
         //     'campaignSolution' => 'string',
@@ -96,22 +142,20 @@ class clientDashboard extends Controller
         $campaign->objective2 = $req->objective2;
         $campaign->objective3 = $req->objective3;
 
-        if($req->file('campaignLogo') == true)
-        {
+        if ($req->file('campaignLogo') == true) {
             $logo = $req->campaignLogo->getClientOriginalName();
-            $uploadLogo = $req->campaignLogo->move('storage/campaign/',$logo);
+            $uploadLogo = $req->campaignLogo->move('storage/campaign/', $logo);
         }
-        if($req->file('campaignImage') == true)
-        {
+        if ($req->file('campaignImage') == true) {
             $image = $req->campaignImage->getClientOriginalName();
             $uploadImage = $req->campaignImage->move('storage/campaign/', $image);
         }
-        
+
         if ($req->file('campaignVideo') == true) {
             $video = $req->campaignVideo->getClientOriginalName();
             $uploadVideo = $req->campaignVideo->move('storage/campaign/', $video);
         }
-  
+
 
         $campaign->logo = $logo;
         $campaign->image = $image;
