@@ -1,4 +1,4 @@
-<div class="row" id="report">
+<div class="bg-white p-3 m-3" id="report">
     <div class="text-center">
         <h4>EDIT CAMPAIGN REPORT</h4>
         <hr>

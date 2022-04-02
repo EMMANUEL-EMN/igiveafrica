@@ -101,7 +101,7 @@ Route::get('/campaign/fundraisers', [clientDashboard::class, 'fundraisers']);
 Route::get('/campaign/reports', [clientDashboard::class, 'reports']);
 Route::get('/campaign/intergrations', [clientDashboard::class, 'intergration']);
 Route::get('/campaign/communication', [clientDashboard::class, 'communication']);
-Route::get('/campaign/partners', [clientDashboard::class, 'partners']);
+
 Route::get('/campaign/account_settings', [clientDashboard::class, 'settings']);
 Route::get('/logout', [userAuth::class, 'logoutClient']);
 

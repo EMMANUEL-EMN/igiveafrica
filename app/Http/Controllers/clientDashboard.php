@@ -107,10 +107,7 @@ class clientDashboard extends Controller
     {
         return view('clientDashboard.communications');
     }
-    public function partners()
-    {
-        return view('clientDashboard.partners');
-    }
+
     public function settings()
     {
         return view('clientDashboard.settings');

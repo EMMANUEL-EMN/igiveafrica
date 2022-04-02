@@ -1,6 +1,6 @@
-<div class="repor">
+<div class="repor bg-white p-3 m-3 table-responsive table-expand-sm">
     <h3 class="text-center">REPORTS</h3>
-    <table>
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th></th>
@@ -12,11 +12,9 @@
                 <th>Video</th>
                 <th>Action</th>
             </tr>
-        </thead> 
+        </thead>
         <tbody>
-{{-- 
-       
-            <tr>
+            {{-- <tr>
                 <th><?php echo $i; ?></th>
                 <th><?php echo $report['story']; ?></th>
                 <th><?php echo $report['activity']; ?></th>
@@ -34,9 +32,7 @@
                         <button class="btn btn-warning" id="updateBtn">DELETE</button>
                     </a>
                 </th>
-            </tr>
-
-             --}}
+            </tr> --}}
         </tbody>
     </table>
 </div>
