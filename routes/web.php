@@ -9,6 +9,7 @@ use App\Http\Controllers\fundraising;
 use App\Http\Controllers\shop;
 use App\Http\Controllers\userAuth;
 use App\Http\Controllers\blog;
+use App\Http\Controllers\clientBe;
 use App\Http\Controllers\contact;
 use App\Http\Controllers\donation;
 use App\Mail\thanksDonor;
@@ -98,14 +99,17 @@ Route::get('/campaign/upgrade', [clientDashboard::class, 'upgrades']);
 Route::get('/campaign/recuring_plans', [clientDashboard::class, 'recuring']);
 Route::get('/campaign/campaigns', [clientDashboard::class, 'campaigns']);
 Route::get('/campaign/fundraisers', [clientDashboard::class, 'fundraisers']);
+
 Route::get('/campaign/reports', [clientDashboard::class, 'reports']);
+Route::post('/campaign/reports/add', [clientBe::class, 'addReport'])->name('report.add');
+
 Route::get('/campaign/intergrations', [clientDashboard::class, 'intergration']);
 Route::get('/campaign/communication', [clientDashboard::class, 'communication']);
 
 Route::get('/campaign/account_settings', [clientDashboard::class, 'settings']);
 Route::get('/logout', [userAuth::class, 'logoutClient']);
 
-Route::post('/campaign/campaign/application', [clientDashboard::class, 'capplication'])->name('client.campaign');
+Route::post('/campaign/campaign/application', [clientBe::class, 'capplication'])->name('client.campaign');
 Route::get('/fundraise/read/{id}', [fundraising::class, 'campaignInfo']);
 
 // email route

@@ -9,6 +9,18 @@
             <h4 class="text-center">CAMPAIGN REPORTS</h4>
 
             <hr>
+            @if (session()->has('error'))
+                <p class="alert alert-danger alert-dismissible">
+                    {{ session('error') }}
+                    <button data-dismiss="alert" class="close">&times;</button>
+                </p>
+            @endif
+            @if (session()->has('status'))
+                <p class="alert alert-success alert-dismissible">
+                    {{ session('status') }}
+                    <button data-dismiss="alert" class="close">&times;</button>
+                </p>
+            @endif
         </div>
         <div class="d-flex justify-content-around bg-white p-3 m-3" id="fw">
             <div class="p-2">
@@ -28,7 +40,9 @@
                 <h4>WRITE CAMPAIGN REPORT</h4>
                 <hr>
             </div>
-            <form action="../app.php" enctype="multipart/form-data" method="POST">
+            <form action="{{ route('report.add') }}" enctype="multipart/form-data" method="POST">
+                @method('post')
+                @csrf
                 <div class="details">
                     <div class="text-start">
                         <h4>REPORT SUMMARY</h4>
@@ -40,7 +54,7 @@
                         </p>
                         <p>Please share with your supporters your activities since last report</p>
                         <p>
-                            <textarea name="activity" id="story" placeholder="write here ....."></textarea>
+                            <textarea name="activities" id="story" placeholder="write here ....."></textarea>
                         </p>
                     </div>
                 </div>
