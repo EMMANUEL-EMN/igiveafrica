@@ -34,17 +34,17 @@ class c_admin extends Controller
         $path = $req->image->move('storage/images/', $name);
 
         $advert = new advert();
-        $advert ->image = $name;
-        $advert ->description = $req->description;
-        $advert ->save();
-        return redirect('/c_adverts')->with('status','successful uploaded');
+        $advert->image = $name;
+        $advert->description = $req->description;
+        $advert->save();
+        return redirect('/c_adverts')->with('status', 'successful uploaded');
     }
 
     public function deleteAdvert($id)
     {
         $image = advert::findOrFail($id);
         $image->delete();
-        return redirect('/c_adverts')->with('status','successful deleted');
+        return redirect('/c_adverts')->with('status', 'successful deleted');
     }
 
     // pages
@@ -59,13 +59,13 @@ class c_admin extends Controller
         $page = new page();
         $page->page = $req->page;
         $page->save();
-        return redirect('/c_pages')->with('status','successful added');
+        return redirect('/c_pages')->with('status', 'successful added');
     }
     public function dpages($id)
     {
         $page = page::findOrFail($id);
         $page->delete();
-        return redirect('/c_pages')->with('status','successful deleted');
+        return redirect('/c_pages')->with('status', 'successful deleted');
     }
     // public function editpages($id)
     // {
@@ -93,14 +93,14 @@ class c_admin extends Controller
         $gallery->image = $name;
         $gallery->description = $req->description;
         $gallery->save();
-        return redirect('/c_gallery')->with('status','successful uploaded');
+        return redirect('/c_gallery')->with('status', 'successful uploaded');
     }
 
     public function editgallery($id)
     {
         $image = gallery::findOrFail($id);
         $image->delete();
-        return redirect('/c_gallery')->with('status','successful deleted');
+        return redirect('/c_gallery')->with('status', 'successful deleted');
     }
 
 
@@ -124,21 +124,21 @@ class c_admin extends Controller
             $path = $req->image->move('storage/images/', $name);
         }
         $content->save();
-        return redirect('/c_web_content')->with('status','successful published');
+        return redirect('/c_web_content')->with('status', 'successful published');
     }
 
     public function editContent($id)
     {
         $content = content::findOrFail($id);
         $pages = page::orderBy('page', 'ASC')->get();
-        return view('contentAdmin.editcontent', compact('content','pages'));
+        return view('contentAdmin.editcontent', compact('content', 'pages'));
     }
 
     public function deleteContent($id)
     {
         $content = content::findOrFail($id);
         $content->delete();
-        return redirect('/c_web_content')->with('status','successful deleted');
+        return redirect('/c_web_content')->with('status', 'successful deleted');
     }
     public function updateContent(Request $req)
     {
@@ -154,9 +154,9 @@ class c_admin extends Controller
         }
 
         $content->save();
-        return redirect('/c_web_content')->with('status','successful edited');   
+        return redirect('/c_web_content')->with('status', 'successful edited');
     }
-    
+
     public function blogs()
     {
         $blogs = blog::orderBy('id', 'DESC')->get();
@@ -164,11 +164,11 @@ class c_admin extends Controller
     }
     public function addBlog(Request $req)
     {
-        
+
         $blog = new blog();
         $blog->title = $req->title;
         $blog->introduction = $req->content;
-        $blog->heading1 = $req->heading1; 
+        $blog->heading1 = $req->heading1;
         $blog->content1 = $req->content1;
         $blog->heading2 = $req->heading2;
         $blog->content2 = $req->content2;
@@ -181,9 +181,9 @@ class c_admin extends Controller
             $path = $req->image->move('storage/images/', $name);
         }
         $blog->save();
-        return redirect('/c_blogs')->with('status','successful published');  
+        return redirect('/c_blogs')->with('status', 'successful published');
     }
-    
+
     public function editBlog($id)
     {
         $blog = blog::findOrFail($id);
@@ -195,7 +195,7 @@ class c_admin extends Controller
         $blog = blog::findOrFail($req->id);
         $blog->title = $req->title;
         $blog->introduction = $req->content;
-        $blog->heading1 = $req->heading1; 
+        $blog->heading1 = $req->heading1;
         $blog->content1 = $req->content1;
         $blog->heading2 = $req->heading2;
         $blog->content2 = $req->content2;
@@ -208,13 +208,17 @@ class c_admin extends Controller
             $path = $req->image->move('storage/images/', $name);
         }
         $blog->save();
-        return redirect('/c_blogs')->with('status','successful updated'); 
+        return redirect('/c_blogs')->with('status', 'successful updated');
     }
 
     public function deleteBlog($id)
     {
         $blog = blog::findOrFail($id);
         $blog->delete();
-        return redirect('/c_blogs')->with('status','successful deleted'); 
+        return redirect('/c_blogs')->with('status', 'successful deleted');
+    }
+    public function addAdmin()
+    {
+        return view('contentAdmin.addAdmin');
     }
 }

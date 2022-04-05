@@ -30,9 +30,9 @@ class clientBe extends Controller
         $image3 = $req->file('image3')->getClientOriginalName();
         $video  = $req->file('video')->getClientOriginalName();
         $videoType = $req->file('video')->getClientOriginalExtension();
-        // if ($videoType != 'mp4') {
-        //     return redirect()->back()->with('error', 'only mp4 video type allowed');
-        // }
+        if ($videoType != 'mp4') {
+            return redirect()->back()->with('error', 'only mp4 video type allowed');
+        }
 
         // upload images
         $req->image1->move('storage/reports', $image1);

@@ -7,7 +7,7 @@
             </div>
             <div class="p-2" style="align-items: bottom">
                 <br>
-                <p>Emmanuel <br> Nyanawi</p>
+                {{-- <p>Emmanuel <br> Nyanawi</p> --}}
             </div>
         </div>
         <hr>
@@ -37,6 +37,14 @@
             <li>
                 <i class="fa fa-info-circle"></i>
                 <a href="/c_blogs">Blogs</a>
+            </li>
+            <li>
+                <i class="fa fa-user"></i>
+                <a href="/add/contentAdmins">Add Admin</a>
+            </li>
+            <li>
+                <i class="fa fa-sign-out"></i>
+                <a href="/logout">Logout</a>
             </li>
         </ul>
     </div>

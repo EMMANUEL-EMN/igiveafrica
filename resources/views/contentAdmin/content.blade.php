@@ -25,16 +25,20 @@
                 <p>
                     <select name="section" id="section">
                         <option value="intro">Intro</option>
-                        <option value="donor">Donor/Center</option>
+                        <option value="top">Top</option>
+                        <option value="donor">Donor</option>
+                        <option value="center">center</option>
                         <option value="bottom">Bottom</option>
                     </select>
                 </p>
                 <p>Title</p>
                 <p><input type="text" name="title" id="title"></p>
                 <p>Content</p>
-                <p><textarea name="content" id="content" rows="8"></textarea></p>
+                <p>
+                    <textarea name="content" id="content" rows="8"></textarea>
+                </p>
                 <p>Image</p>
-                <p><input type="file" name="image" id="image"></p>    
+                <p><input type="file" name="image" id="image"></p>
                 <p><button class="btn btn-primary">PUBLISH</button></p>
             </div>
         </form>

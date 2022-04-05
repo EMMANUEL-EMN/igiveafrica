@@ -22,20 +22,13 @@
 <body>
     <div class="container-fluid">
         @include('layouts.mainDesktopNav')
-        {{-- <div class="row">
-        <div class="s">
-            @yield('intro')
-        </div>
-    </div> --}}
         <div class="row">
-            <div class="col-sm">
-                <div id="maincont">
-                    @yield('content')
-                </div>
+            <div id="maincont">
+                @yield('content')
             </div>
-            <div class="col-md-3">
-                @include('main.adsector')
-            </div>
+        </div>
+        <div class="row">
+            @include('main.adsector')
         </div>
         <div class="row">
             @include('layouts.mainfooter')

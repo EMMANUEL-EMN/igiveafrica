@@ -12,6 +12,8 @@ use App\Http\Controllers\blog;
 use App\Http\Controllers\clientBe;
 use App\Http\Controllers\contact;
 use App\Http\Controllers\donation;
+use App\Http\Controllers\learnMore;
+use App\Http\Controllers\lresources;
 use App\Mail\thanksDonor;
 
 /*
@@ -26,20 +28,23 @@ use App\Mail\thanksDonor;
 */
 
 Route::get('/', [main::class, 'index']);
-Route::get('/about_us/', [main::class, 'about']);
-Route::get('/our_services/', [main::class, 'services']);
-Route::get('/how_it_works/', [main::class, 'how']);
-Route::get('/why_us/', [main::class, 'why']);
-Route::get('/pricing/', [main::class, 'pricing']);
-Route::get('/Case_studies/', [main::class, 'caseStudies']);
-Route::get('/our_team/', [main::class, 'team']);
-Route::get('/partners/', [main::class, 'partner']);
-Route::get('/events_&_auction/', [main::class, 'event']);
-Route::get('/strategies/', [main::class, 'strategies']);
-Route::get('/communication/', [main::class, 'communication']);
-Route::get('/fundraisers/', [main::class, 'fundraisers']);
-Route::get('/donors/', [main::class, 'donors']);
-Route::get('/nonprofits/', [main::class, 'nonprofits']);
+
+Route::get('/about_us/', [learnMore::class, 'about']);
+Route::get('/our_services/', [learnMore::class, 'services']);
+Route::get('/how_it_works/', [learnMore::class, 'how']);
+Route::get('/why_us/', [learnMore::class, 'why']);
+Route::get('/pricing/', [learnMore::class, 'pricing']);
+Route::get('/Case_studies/', [learnMore::class, 'caseStudies']);
+Route::get('/our_team/', [learnMore::class, 'team']);
+Route::get('/partners/', [learnMore::class, 'partner']);
+Route::get('/events_&_auction/', [learnMore::class, 'event']);
+
+Route::get('/strategies/', [lresources::class, 'strategies']);
+Route::get('/communication/', [lresources::class, 'communication']);
+Route::get('/fundraisers/', [lresources::class, 'fundraisers']);
+Route::get('/donors/', [lresources::class, 'donors']);
+Route::get('/nonprofits/', [lresources::class, 'nonprofits']);
+
 
 // login user
 Route::get('/login/', [main::class, 'login'])->name('login');
@@ -91,6 +96,9 @@ Route::post('/addblog', [c_admin::class, 'addBlog'])->name('blog.add');
 Route::get('/deleteBlog/{id}', [c_admin::class, 'deleteBlog'])->name('blog.delete');
 Route::get('/editBlog/{id}', [c_admin::class, 'editBlog'])->name('blog.edit');
 Route::put('/updateBlog', [c_admin::class, 'updateBlog'])->name('blog.update');
+
+Route::get('/add/contentAdmins', [c_admin::class, 'addAdmin']);
+Route::post('/add/contentAdmin', [userAuth::class, 'addAdmin'])->name('admin.add');
 
 // client dashboard
 Route::get('/campaign/dashboard', [clientDashboard::class, 'index']);

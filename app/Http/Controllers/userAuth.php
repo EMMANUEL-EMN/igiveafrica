@@ -87,4 +87,31 @@ class userAuth extends Controller
         Auth::logout();
         return redirect('/login');
     }
+    public function addAdmin(Request $req)
+    {
+
+        $client = new client();
+        $client->firstname = $req->fname;
+        $client->lastname = $req->lname;
+        $client->email = $req->email;
+        $client->password = Hash::make($req->password);
+        $client->country = $req->country;
+        $client->city = $req->city;
+        $client->org_type = $req->org_type;
+        $client->location = $req->location;
+        $client->url = $req->url;
+        $client->org_email = $req->org_email;
+        $client->org_tel = $req->phone;
+        $client->orgname = $req->orgname;
+        $client->mailinglist = $req->mailing_list;
+        $client->save();
+
+        $user = new User();
+        $user->name = $req->fname . " " . $req->lname;
+        $user->email = $req->email;
+        $user->password = Hash::make($req->password);
+        $user->save();
+
+        return redirect('/join')->with('sent', 'Account created successfully');
+    }
 }
