@@ -10,10 +10,12 @@ use App\Http\Controllers\shop;
 use App\Http\Controllers\userAuth;
 use App\Http\Controllers\blog;
 use App\Http\Controllers\clientBe;
+use App\Http\Controllers\clientCommunication;
 use App\Http\Controllers\contact;
 use App\Http\Controllers\donation;
 use App\Http\Controllers\learnMore;
 use App\Http\Controllers\lresources;
+use App\Http\Controllers\SmsController;
 use App\Mail\thanksDonor;
 
 /*
@@ -110,6 +112,9 @@ Route::get('/campaign/fundraisers', [clientDashboard::class, 'fundraisers']);
 
 Route::get('/campaign/reports', [clientDashboard::class, 'reports']);
 Route::post('/campaign/reports/add', [clientBe::class, 'addReport'])->name('report.add');
+Route::get('/campaign/update/report/{id}', [clientBe::class, 'editR']);
+Route::get('/campaign/delete/report/{id}', [clientBe::class, 'deleteR']);
+Route::post('/campaign/edit/report', [clientBe::class, 'updateR'])->name('report.update');
 
 Route::get('/campaign/intergrations', [clientDashboard::class, 'intergration']);
 Route::get('/campaign/communication', [clientDashboard::class, 'communication']);
@@ -120,5 +125,12 @@ Route::get('/logout', [userAuth::class, 'logoutClient']);
 Route::post('/campaign/campaign/application', [clientBe::class, 'capplication'])->name('client.campaign');
 Route::get('/fundraise/read/{id}', [fundraising::class, 'campaignInfo']);
 
+
+
 // email route
 Route::post('/thanks', [donation::class, 'sendMail'])->name('igive.mail');
+Route::get('/sms', [SmsController::class, 'index'])->name('sms.send');
+
+// communication route
+Route::post('/send/email', [clientCommunication::class, 'sendEmail'])->name('email.send');
+Route::post('/campaign/add/video', [clientCommunication::class, 'shareVideo'])->name('video.upload');

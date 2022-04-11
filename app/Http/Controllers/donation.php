@@ -32,7 +32,8 @@ class donation extends Controller
         try {
             Mail::to($req->email)->send(new thanksDonor());
         } catch (\Exception $ex) {
-            throw new Exception('Something went wrong', 0, $ex);
+            return redirect('/fundraise/read/' . $req->id)
+            ->with('status', 'Donation not sent successful');
         }
 
         return redirect('/fundraise/read/' . $req->id)->with('status', 'Donation sent successful.

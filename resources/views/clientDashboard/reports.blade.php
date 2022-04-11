@@ -91,9 +91,6 @@
                 </div>
             </form>
         </div>
-        <div id="updateReport">
-            @include('clientDashboard.updateReport')
-        </div>
     </div>
 
 @endsection

@@ -32,10 +32,10 @@
                         <video src="{{ url('storage/reports/' . $r->video) }}" id="rimg"></video>
                     </td>
                     <td>
-                        <a href="?id={{ $r->id }}">
+                        <a href="/campaign/delete/report/id={{ $r->id }}">
                             <i class="fa fa-trash-alt text-danger"></i>
                         </a>
-                        <a href="?id={{ $r->id }}">
+                        <a href="/campaign/update/report/id={{ $r->id }}">
                             <i class="fa fa-edit text-success"></i>
                         </a>
                     </td>

@@ -21,6 +21,8 @@ class clientDashboard extends Controller
             $d += $key['amount'];
         }
         $campaignss = campaign::where('cemail', session('position'))->get();
+        $targetDonation = 0;
+        $targetDonors = 0;
         foreach ($campaignss as $campaign) {
             $targetDonation = $campaign['goal'];
             $targetDonors = $campaign['tdonors'];

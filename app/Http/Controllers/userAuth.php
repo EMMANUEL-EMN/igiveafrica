@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\admin;
 use App\Models\client;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,13 +26,12 @@ class userAuth extends Controller
 
             foreach ($clients as $client) {
 
-                if ($client['org_type'] == 'contentAdmin') {
-
-                    session()->put('position', $client['email']);
-                    return redirect('/c_dashboard');
-                } elseif ($client['org_type'] == 'nonprofit' || $client['org_type'] == 'individual') {
+                if ($client['org_type'] == 'nonprofit' || $client['org_type'] == 'individual') {
                     session()->put('position', $client['email']);
                     return redirect('/campaign/dashboard');
+                } else {
+                    session()->put('position', $req->email);
+                    return redirect('/c_dashboard');
                 }
             }
         }
@@ -90,20 +90,17 @@ class userAuth extends Controller
     public function addAdmin(Request $req)
     {
 
-        $client = new client();
+        $client = new admin();
         $client->firstname = $req->fname;
         $client->lastname = $req->lname;
         $client->email = $req->email;
         $client->password = Hash::make($req->password);
         $client->country = $req->country;
         $client->city = $req->city;
-        $client->org_type = $req->org_type;
-        $client->location = $req->location;
-        $client->url = $req->url;
-        $client->org_email = $req->org_email;
-        $client->org_tel = $req->phone;
-        $client->orgname = $req->orgname;
-        $client->mailinglist = $req->mailing_list;
+        $client->account = $req->org_type;
+        $client->county = $req->location;
+        $client->phone = $req->phone;
+        $client->idnum = $req->idnum;
         $client->save();
 
         $user = new User();
@@ -112,6 +109,6 @@ class userAuth extends Controller
         $user->password = Hash::make($req->password);
         $user->save();
 
-        return redirect('/join')->with('sent', 'Account created successfully');
+        return redirect('/add/contentAdmins')->with('sent', 'Account created successfully');
     }
 }

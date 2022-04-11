@@ -51,19 +51,6 @@ class clientBe extends Controller
     // application
     public function capplication(Request $req)
     {
-        // $validated = $req->validate([
-        //     'campaignTitle' => 'required',
-        //     'useremail' => 'required|email',
-        //     'campaingGoal' => 'required',
-        //     'targetDonors' => 'required',
-        //     'objective1' => 'string',
-        //     'objective2' => 'string',
-        //     'objective3' => 'string',
-        //     'campaignSummary' => 'string',
-        //     'campaignChallenge' => 'string',
-        //     'campaignSolution' => 'string',
-        //     'campaignWord' => 'string'
-        // ]);
 
         $campaign = new campaign();
         $campaign->cemail = $req->useremail;
@@ -100,5 +87,93 @@ class clientBe extends Controller
         $campaign->save();
 
         return redirect('/campaign/campaigns')->with('info', 'successfully created');
+    }
+
+    public function editR($id)
+    {
+        $report = report::findOrFail($id);
+        return view('clientDashboard.updateReport', compact('report'));
+    }
+
+    public function updateR(Request $req, $id)
+    {
+        $report = report::findOrFail($id);
+
+        $validated = $req->validate([
+            'story' => 'string',
+            'activities' => 'string',
+            'image1' => 'image',
+            'image2' => 'image',
+            'image3' => 'image',
+            'video' => 'file'
+        ]);
+        $report->cemail = session('position');
+        $report->story = $req->story;
+        $validated = $req->validate([
+            'campaignTitle' => 'required',
+            'useremail' => 'required|email',
+            'campaingGoal' => 'required',
+            'targetDonors' => 'required',
+            'objective1' => 'string',
+            'objective2' => 'string',
+            'objective3' => 'string',
+            'campaignSummary' => 'string',
+            'campaignChallenge' => 'string',
+            'campaignSolution' => 'string',
+            'campaignWord' => 'string'
+        ]);
+        $report->activities = $req->activities;
+        if ($req->file('image1') == true) {
+            $filePath = "/storage/reports/" . $report['image1'];
+            $image1 = $req->file('image1')->getClientOriginalName();
+            unlink($filePath);
+            // upload images
+            $req->image1->move('storage/reports', $image1);
+            $report->image1 = $image1;
+        }
+        if ($req->file('image1') == true) {
+            $filePath2 = "/storage/reports/" . $report['image2'];
+            $image2 = $req->file('image2')->getClientOriginalName();
+            unlink($filePath2);
+            $req->image2->move('storage/reports', $image2);
+            $report->image2 = $image2;
+        }
+        if ($req->file('image3')) {
+            $filePath3 = "/storage/reports/" . $report['image3'];
+            $image3 = $req->file('image3')->getClientOriginalName();
+            unlink($filePath3);
+            $req->image3->move('storage/reports', $image3);
+            $report->image3 = $image3;
+        }
+        if ($req->file('video')) {
+            $filePath4 = "/storage/reports/" . $report['video'];
+            $video  = $req->file('video')->getClientOriginalName();
+            $videoType = $req->file('video')->getClientOriginalExtension();
+            if ($videoType != 'mp4') {
+                return redirect()->back()->with('error', 'only mp4 video type allowed');
+            }
+            unlink($filePath4);
+            $req->video->move('storage/reports', $video);
+            $report->video = $video;
+        }
+
+        $report->save();
+        return redirect('/campaign/reports')->with('status', 'successful submited');
+    }
+
+
+    public function deleteR($id)
+    {
+        $report = report::findOrFail($id);
+        $filePath = "/storage/reports/" . $report['image1'];
+        $filePath2 = "/storage/reports/" . $report['image2'];
+        $filePath3 = "/storage/reports/" . $report['image3'];
+        $filePath4 = "/storage/reports/" . $report['video'];
+        unlink($filePath);
+        unlink($filePath2);
+        unlink($filePath3);
+        unlink($filePath4);
+        $report->delete();
+        return redirect('/campaign/reports')->with('status', 'successful deleted');
     }
 }
