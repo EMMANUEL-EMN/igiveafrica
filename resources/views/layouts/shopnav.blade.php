@@ -1,33 +1,39 @@
-<div>
-    
-</div>
-<div class="topNav">
-    <div>
-        <h3 style="color: black;">
-            <img src="{{ url('storage/images/logo.png') }}" alt="" class="logo">
-        </h3>
-    </div>
-    <div class="searchArea">
-        <form action="./shop/process.php" method="POST">
-        <input type="text" id="search" name="search" placeholder="Search products">
-        <input type="button" id="searchButton" value="SEARCH" name="search">
-        <span id="response"></span>
-        </form>
-    </div>
-    <div class="flexNav">
-        <div>
-        <a id="navs" href="/login/"> Login</a>
-        </div>
-        <div>
-            <a id="navs" href="/cart/">Cart(<?php 
-           if (!empty($_SESSION['cart'])) {
-               echo count($_SESSION['cart']);
-           }else {
-               echo 0;
-           } ?>)</a>
-        </div>
-        <div>
-            <a id="navs" href="/">IGIVEAFRICA</a>
-        </div>
-    </div>
+<div class="bg-white">
+    <nav class="navbar navbar-expand-sm bg-primary">
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/charity_shop">
+                    IGIVEAFRICA <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <input type="text" name="search" id="search" placeholder="search product">
+                <button class="btn btn-warning btn-sm">SEARCH</button>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-shopping-cart"></i>
+                    @if (session()->has('cart'))
+                        {{ count(session('cart')) }} item(s)
+                    @else
+                        0
+                    @endif
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    sign-in
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    Help
+                </a>
+            </li>
+        </ul>
+
+    </nav>
 </div>

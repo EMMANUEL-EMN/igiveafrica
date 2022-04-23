@@ -1,6 +1,6 @@
 <div class="side_nav1">
     <div class="cp">
-        <p><i class="fa fa-server"></i> Control Panel</p>
+        <p><i class="fa fa-server"></i> CONTROL PANEL</p>
         <hr>
     </div>
     <div class="dboard">
@@ -25,7 +25,8 @@
     <div class="setings">
         <hr>
         <h5>SETTINGS</h5>
-        <p><a id="side_nav_anchor" href="/campaign/intergrations/"><i class="fa fa-yin-yang"></i> Intergrations</a></p>
+        <p><a id="side_nav_anchor" href="/campaign/intergrations/"><i class="fa fa-shopping-cart"></i> Charity Shop</a>
+        </p>
         <p><a id="side_nav_anchor" href="/campaign/account_settings/"><i class="fa fa-wrench"></i> Account
                 settings</a></p>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\campaign;
 use App\Models\donation;
+use App\Models\products;
 use App\Models\report;
 use Illuminate\Http\Request;
 
@@ -105,7 +106,9 @@ class clientDashboard extends Controller
     }
     public function intergration()
     {
-        return view('clientDashboard.intergrations');
+        $products = products::where('dealer',session('position'))->get();
+        $categories = ['food','fashion','arts'];
+        return view('clientDashboard.intergrations',compact('products','categories'));
     }
     public function communication()
     {

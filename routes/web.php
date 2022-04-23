@@ -15,6 +15,7 @@ use App\Http\Controllers\contact;
 use App\Http\Controllers\donation;
 use App\Http\Controllers\learnMore;
 use App\Http\Controllers\lresources;
+use App\Http\Controllers\products;
 use App\Http\Controllers\SmsController;
 use App\Mail\thanksDonor;
 
@@ -68,6 +69,7 @@ Route::get('/fundraise/courses_we_serve/', [fundraising::class, 'index']);
 
 // onlineshop
 Route::get('/charity_shop/', [shop::class, 'index']);
+Route::get('add/to/cart/{id}',[shop::class,'add_to_cart']);
 
 // content manager routes
 Route::get('/c_dashboard', [c_admin::class, 'index']);
@@ -134,3 +136,7 @@ Route::get('/sms', [SmsController::class, 'index'])->name('sms.send');
 // communication route
 Route::post('/send/email', [clientCommunication::class, 'sendEmail'])->name('email.send');
 Route::post('/campaign/add/video', [clientCommunication::class, 'shareVideo'])->name('video.upload');
+
+// products routes
+Route::post('/products/add', [products::class, 'addProduct'])->name('product.add');
+Route::get('/product/delete/{id}', [products::class,'deleteProduct']);
