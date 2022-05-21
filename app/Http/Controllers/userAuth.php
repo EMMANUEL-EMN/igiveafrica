@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\admin;
+use App\Models\advert;
 use App\Models\client;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,13 +24,19 @@ class userAuth extends Controller
         if (Auth::attempt($credentials)) {
 
             $clients = client::where('email', $req->email)->get();
+            
 
             foreach ($clients as $client) {
 
                 if ($client['org_type'] == 'nonprofit' || $client['org_type'] == 'individual') {
                     session()->put('position', $client['email']);
                     return redirect('/campaign/dashboard');
-                } else {
+                }
+                elseif ($admin = admin::where('email', $req->email)->get()) {
+                    session()->put('position', $req->email);
+                    return redirect('/c_web_content');
+                }
+                 else {
                     session()->put('position', $req->email);
                     return redirect('/c_dashboard');
                 }
@@ -110,5 +117,39 @@ class userAuth extends Controller
         $user->save();
 
         return redirect('/add/contentAdmins')->with('sent', 'Account created successfully');
+    }
+    
+    public function confirm(Request $req)
+    {
+        $advert = advert::get();
+        return view('main.password.reset',compact('advert'));
+    }
+
+    public function verify(Request $req)
+    {
+        $users = User::where('email',$req->email)->get();
+        try {
+            foreach ($users as $user) {
+                if($user['email'] === $req->email){
+                    $advert = advert::get();
+                    $userId = $user['id'];
+                    return view('main.password.new',compact('advert','userId'));
+                    
+                }
+            }
+            return redirect()->back()->with('error','The user with this email does not exist');
+
+        } catch (\Throwable $th) {
+            
+            return redirect()->back()->with('error','The user with this email does not exist');
+        }
+    }
+
+    public function resetP(Request $req)
+    {
+        $user = User::findOrFail($req->id);
+        $user->password = Hash::make($req->password);
+        $user->save();
+        return redirect('/login');
     }
 }

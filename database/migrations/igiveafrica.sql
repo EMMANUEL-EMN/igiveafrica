@@ -27,6 +27,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `adverts`
 --
 
+CREATE Database `igiveafrica`;
+USE `igiveafrica`;
+
 CREATE TABLE `adverts` (
   `id` int(10) UNSIGNED NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,

@@ -32,8 +32,8 @@
             <p>Phone Number</p>
             <input type="text" name="phone" id="comment" value="+254" required>
             <p>
-                Display your donations on donor wall
-                <input type="checkbox" name="display_name" id="display_name">
+                {{-- Display your donations on donor wall --}}
+                <input type="hidden" name="display_name" id="display_name" value="on">
             </p>
         </div>
         <hr>

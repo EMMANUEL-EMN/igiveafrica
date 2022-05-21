@@ -3,7 +3,7 @@
         <h4 class="text-center">FEATURED AND PARTICULARS</h4>
     </div>
     <div class="d-flex justify-content-between">
-        @foreach ($advert as $c)
+        @foreach ($advert ?? '' as $c)
             <div class="advert">
                 <div>
                     <center>

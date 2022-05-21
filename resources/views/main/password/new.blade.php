@@ -6,18 +6,18 @@
 
     <center>
         <div class="uf bg-white p-4" style="max-width: 500px">
-            <form action="{{ route('user.auth') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('password.reset') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @method('post')
+                @method('put')
                 <div class="ldetails">
-                    <h4 class="text-center">WELCOME BACK</h4>
+                    <h4 class="text-center">RESET PASSWORD</h4>
                     <hr>
                     @if (session()->has('status'))
                         <p class="alert alert-danger">{{ session('status') }}</p>
                     @endif
-                    <p>Email: </p>
+                    <p>New Password: </p>
                     <p>
-                        <input type="email" name="email" id="email" required>
+                        <input type="password" name="password" id="pass1" required>
                         <br>
 
                         {{-- @if ($errors == true)
@@ -29,7 +29,8 @@
                         @endif --}}
 
                     </p>
-                    <p>Password: </p>
+                    <p>Re-type Password: </p>
+                    <input type="hidden" name="id" id="" value="{{ $userId }}">
                     <p>
                         <input type="password" name="password" id="password" required>
                         {{-- <br>
@@ -42,13 +43,7 @@
                     @endif --}}
                     </p>
                     <p>
-                        <button class="btn btn-warning">LOGIN</button>
-                    </p>
-                    <p>
-                        Forgot password ? <a href="/user/credentials">Reset</a>
-                    </p>
-                    <p>
-                        Not a member ? <a href="/join">Register</a>
+                        <button class="btn btn-warning">RESET</button>
                     </p>
                 </div>
             </form>

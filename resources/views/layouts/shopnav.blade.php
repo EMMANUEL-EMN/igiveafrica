@@ -13,7 +13,7 @@
                 <button class="btn btn-warning btn-sm">SEARCH</button>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/shopping_cart">
                     <i class="fa fa-shopping-cart"></i>
                     @if (session()->has('cart'))
                         {{ count(session('cart')) }} item(s)

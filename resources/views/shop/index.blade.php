@@ -36,16 +36,17 @@
 
         </div>
     </div> --}}
+    
     <div class="products d-flex justify-content-around">
         @foreach ($products as $pro)
             <div class="card bg-white" style="height: 340px">
                 <div class="card-head">
-                    <img src="{{ url('storage/products/'.$pro->image)}}" alt="" id="productImage">
+                    <img src="{{ url('storage/products/' . $pro->image) }}" alt="" id="productImage">
                 </div>
                 <div class="card-body">
                     {{ $pro->name }}
                     <br>
-                    {{ $pro->price}}
+                    {{ $pro->price }}
                 </div>
                 <div class="card-footer">
                     <a href="/add/to/cart/{{ $pro->id }}">

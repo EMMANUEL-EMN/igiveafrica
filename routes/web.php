@@ -53,6 +53,11 @@ Route::get('/nonprofits/', [lresources::class, 'nonprofits']);
 Route::get('/login/', [main::class, 'login'])->name('login');
 Route::post('/authuser', [userAuth::class, 'login'])->name('user.auth');
 
+// password reset
+Route::get('/user/credentials',[userAuth::class,'confirm'])->name('email.confirm');
+Route::post('/user/email/confirmation',[userAuth::class,'verify'])->name('email.verify');
+Route::put('/password/reset',[userAuth::class, 'resetP'])->name('password.reset');
+
 // contact us
 Route::get('/contact_us/', [main::class, 'contact']);
 Route::post('/contact/igive', [contact::class, 'contact'])->name('contact.igive');
@@ -69,7 +74,9 @@ Route::get('/fundraise/courses_we_serve/', [fundraising::class, 'index']);
 
 // onlineshop
 Route::get('/charity_shop/', [shop::class, 'index']);
-Route::get('add/to/cart/{id}',[shop::class,'add_to_cart']);
+Route::get('add/to/cart/{id}', [shop::class, 'add_to_cart']);
+Route::get('/shopping_cart', [shop::class, 'cart']);
+Route::get('/item/remove/{id}', [shop::class, 'remove']);
 
 // content manager routes
 Route::get('/c_dashboard', [c_admin::class, 'index']);
@@ -139,4 +146,4 @@ Route::post('/campaign/add/video', [clientCommunication::class, 'shareVideo'])->
 
 // products routes
 Route::post('/products/add', [products::class, 'addProduct'])->name('product.add');
-Route::get('/product/delete/{id}', [products::class,'deleteProduct']);
+Route::get('/product/delete/{id}', [products::class, 'deleteProduct']);
